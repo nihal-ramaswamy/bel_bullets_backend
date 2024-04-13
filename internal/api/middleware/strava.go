@@ -10,7 +10,7 @@ func StravaMiddleWare() gin.HandlerFunc {
 	token := utils.GetDotEnvVariable("AUTHORIZATION_TOKEN")
 
 	return func(ctx *gin.Context) {
-		ctx.Header("Authorization", "Bearer "+token)
+		ctx.Set("Authorization", "Bearer "+token)
 		ctx.Next()
 	}
 }
