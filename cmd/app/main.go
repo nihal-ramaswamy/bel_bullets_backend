@@ -10,6 +10,7 @@ import (
 
 func main() {
 	server_config := server_config.Default()
+
 	gin.SetMode(server_config.GinMode)
 	server := gin.Default()
 	server.Use(cors.New(server_config.Cors))
