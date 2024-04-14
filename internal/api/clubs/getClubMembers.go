@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func GetClubByIdHandler(clubId string) gin.HandlerFunc {
+func GetClubMembers(clubId string) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		authToken := ctx.GetString("Authorization")
 		page, ok := ctx.GetQuery("page")
@@ -16,7 +16,7 @@ func GetClubByIdHandler(clubId string) gin.HandlerFunc {
 			page = "1"
 		}
 
-		clubDetails, err := utils.GetClubById(clubId, authToken, page)
+		clubDetails, err := utils.GetClubMembers(clubId, authToken, page)
 
 		if nil != err {
 			log.Fatal(err.Error())

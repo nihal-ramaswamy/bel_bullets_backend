@@ -24,6 +24,8 @@ func main() {
 	strava := server.Group("/strava", middleware.StravaMiddleWare())
 	{
 		strava.GET("/getClubById", clubsApi.GetClubByIdHandler(utils.GetDotEnvVariable("CLUB_ID")))
+		strava.GET("/getClubMembers", clubsApi.GetClubMembers(utils.GetDotEnvVariable("CLUB_ID")))
+
 	}
 
 	server.Run(server_config.Port)
